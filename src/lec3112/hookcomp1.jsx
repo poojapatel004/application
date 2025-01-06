@@ -15,3 +15,4 @@ export default FunComp1;
 //     <FuncComp1 />
 //   </StrictMode>
 // );
+
