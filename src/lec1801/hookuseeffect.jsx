@@ -1,32 +1,71 @@
 import * as React from "react";
 
-function fetchUseData(){
-    return new Promise((resolve)=>{
-        setTimeout(() => {
-            resolve({x:"Pooja",y:1});
-        }, 5000);
-    });
+function fetchuserData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ name: "Pooja", id: 1, hobbies: ["Reading", "Gaming", "Dancing"] });
+    }, 5000);
+  });
 }
 
-function ApiSimulatoin(){
-    const[name,setName]=React.useState("loading....")
-    const[id,setId]=React.useState("loading....")
-    React.useEffect(()=>{
-    fetchUseData().then((abc)=>{
-        setName(abc.x);
-        setId(abc.y);
+function Apisimulator() {
+  const [name, setName] = React.useState("wait...");
+  const [id, setId] = React.useState("wait...");
+  const [hobbies, setHobbies] = React.useState([]);
+  const [countdown, setCountdown] = React.useState(10); // Countdown starts at 10
+  const [timer, setTimer] = React.useState(0); // Timer starts at 0
+
+  // Fetch user data on component mount
+  React.useEffect(() => {
+    fetchuserData().then((data) => {
+      setName(data.name);
+      setId(data.id);
+      setHobbies(data.hobbies);
     });
-    });
-    return(
-        <div>
-           <b> User: {name} <br />
-           Id: {id}</b>
-        </div>
-    );
+  }, []);
+
+  // Countdown timer
+  React.useEffect(() => {
+    const countdownInterval = setInterval(() => {
+      setCountdown((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(countdownInterval); // Cleanup on unmount
+  }, []);
+
+  // Incrementing timer
+  React.useEffect(() => {
+    const timerInterval = setInterval(() => {
+      setTimer((prev) => {
+        if (prev < 10) return prev + 1; // Increment until it reaches 10
+        clearInterval(timerInterval); // Stop the timer at 10
+        return prev; // Retain the value at 10
+      });
+    }, 1000);
+
+    return () => clearInterval(timerInterval); // Cleanup on unmount
+  }, []);
+
+  return (
+    <div>
+      <h1>API Simulator</h1>
+      <h2>Name: {name}</h2>
+      <h2>ID: {id}</h2>
+      <h3>Hobbies:</h3>
+      <ul>
+        {hobbies.map((hobby, index) => (
+          <li key={index}>{hobby}</li>
+        ))}
+      </ul>
+      <h3>Countdown: {countdown}</h3>
+      <h3>Timer: {timer}</h3>
+    </div>
+  );
 }
 
-export default ApiSimulatoin;
+export default Apisimulator;
 
-//Implement Countdown timer with useeffect
-//pass array of string as argument
+
+// implement counterdown/plus timer
+// pass array of strings as argument
 //convert array to unordered list
