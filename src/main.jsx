@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import HookExmp3 from './lec0601/hookExmp3';
 
+import ApiSimulatoin from './lec1801/hookuseeffect';
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <HookExmp3/>
+    <ApiSimulatoin/>
   </StrictMode>
 );
