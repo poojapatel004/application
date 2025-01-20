@@ -1,11 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import ApiSimulatoin from "./lec1801/hookuseeffect";
-
-
+//import Apisimulator from "./lec1801/hookuseeffect";
+import ImageChanger from './lec2001/useeffect';
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <ApiSimulatoin/>
-    
+  <StrictMode>    
+   <ImageChanger/>
   </StrictMode>
 );

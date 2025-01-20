@@ -9,8 +9,8 @@ function fetchuserData() {
 }
 
 function Apisimulator() {
-  const [name, setName] = React.useState("wait...");
-  const [id, setId] = React.useState("wait...");
+  const [name, setName] = React.useState("Loading...");
+  const [id, setId] = React.useState("Loading...");
   const [hobbies, setHobbies] = React.useState([]);
   const [countdown, setCountdown] = React.useState(10); // Countdown starts at 10
   const [timer, setTimer] = React.useState(0); // Timer starts at 0
@@ -68,4 +68,5 @@ export default Apisimulator;
 
 // implement counterdown/plus timer
 // pass array of strings as argument
-//convert array to unordered list
+// convert array to unordered list
+// 
