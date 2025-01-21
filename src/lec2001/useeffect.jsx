@@ -10,17 +10,13 @@ const ImageChanger = () => {
     'girl.jpg',
     'cat.webp',
   ];
-
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 4000); // Change image every 4 seconds
-
     return () => clearInterval(interval); // Cleanup on unmount
   }, [images.length]);
-
   return (
     <div style={{ width: '600px', 
         height: '400px', 
@@ -37,5 +33,4 @@ const ImageChanger = () => {
     </div>
   );
 };
-
 export default ImageChanger;
