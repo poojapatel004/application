@@ -5,7 +5,6 @@ const id = (function* () {
     yield i++;
   }
 })();
-
 class Monolithic extends React.Component {
   state = {
     articles: [
@@ -90,6 +89,3 @@ class Monolithic extends React.Component {
   }
 }
 export default Monolithic;
-
-
-
